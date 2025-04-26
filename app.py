@@ -9,6 +9,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
+def current_year():
+    date = f"{datetime.now().strftime('%Y')}"
+    print(date)
+    return date
+
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
@@ -36,11 +41,11 @@ def initialize_database():
 
 @app.route('/')
 def landing_page():
-    return render_template('landing_page.html')
+    return render_template('landing_page.html', year=current_year())
 
 @app.route('/kanban')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', year=current_year())
 
 
 @app.route('/api/tasks', methods=['GET', 'POST'])
