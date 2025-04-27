@@ -45,7 +45,8 @@ def landing_page():
 
 @app.route('/kanban')
 def index():
-    return render_template('index.html', year=current_year())
+    return render_template('index.html',
+                           year=current_year())
 
 
 @app.route('/api/tasks', methods=['GET', 'POST'])

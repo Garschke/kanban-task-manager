@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+      {% block styles %}
+      <!-- Bootstrap 5.3.5 core CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Link to the styles.css here to apply styling to all the child templates.-->
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+      <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
+      {% endblock %}
+      <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body class="text-light gradient-background">
+
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer class="footer fixed-bottom bg-dark text-white text-center py-3">
+      <div class="container">
+          <div class="mb-0">©{{year}} Garschke.eu - All rights reserved.</div>
+      </div>
+    </footer>
+    {% block scripts %}
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap 5.3.5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="/static/js/app.js"></script>
+    {% endblock %}
+  </body>
+</html>

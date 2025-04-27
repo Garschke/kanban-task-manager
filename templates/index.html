@@ -1,112 +1,92 @@
 <!-- templates/index.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <title>Kanban Task Manager</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
-</head>
-<body class="text-light gradient-background">
-    <div class="container-fluid">
-        <div class="col text-center title_background">
-            <a href="{{ url_for('landing_page') }}">
-                <img src="{{ url_for('static', filename='images/kanban_logo.png') }}" alt="Kanban" width="50px">
-            </a>
-            <h1 class="my-4">Kanban Task Manager</h1>
-        </div>
+{% extends 'base.html' %}
 
-        <div class="row kanban-board">
-            &nbsp; &nbsp;  <!-- Spacer -->
-            <!-- Backlog Column -->
-            <div class="col-sm kanban-column" data-status="backlog">
-                <h6>Backlog</h6>
-                <div class="tasks-list" id="backlog-tasks"></div>
-                <div class="add-task-container">
-                    <textarea class="form-control new-task-title mb-2" placeholder="Enter task title"></textarea>
-                    <button class="btn btn-primary add-task-btn">Add Task</button>
-                </div>
-            </div>
-            &nbsp; &nbsp;  <!-- Spacer -->
-            <!-- To Do Column -->
-            <div class="col-sm kanban-column" data-status="todo">
-                <h6>To Do</h6>
-                <div class="tasks-list" id="todo-tasks"></div>
-                <div class="add-task-container">
-                    <textarea class="form-control new-task-title mb-2" placeholder="Enter task title"></textarea>
-                    <button class="btn btn-primary add-task-btn">Add Task</button>
-                </div>
-            </div>
-            &nbsp; &nbsp;  <!-- Spacer -->
-            <!-- In Progress Column -->
-            <div class="col-sm kanban-column" data-status="in_progress">
-                <h6>In Progress</h6>
-                <div class="tasks-list" id="in-progress-tasks"></div>
-                <div class="add-task-container">
-                    <textarea class="form-control new-task-title mb-2" placeholder="Enter task title"></textarea>
-                    <button class="btn btn-primary add-task-btn">Add Task</button>
-                </div>
-            </div>
-            &nbsp; &nbsp;  <!-- Spacer -->
-            <!-- In Review Column -->
-            <div class="col-sm kanban-column" data-status="in_review">
-                <h6>In Review</h6>
-                <div class="tasks-list" id="in-review-tasks"></div>
-                <div class="add-task-container">
-                    <textarea class="form-control new-task-title mb-2" placeholder="Enter task title"></textarea>
-                    <button class="btn btn-primary add-task-btn">Add Task</button>
-                </div>
-            </div>
-            &nbsp; &nbsp;  <!-- Spacer -->
-            <!-- Done Column -->
-            <div class="col-sm kanban-column" data-status="done">
-                <h6>Done</h6>
-                <div class="tasks-list" id="done-tasks"></div>
-                <div class="add-task-container">
-                    <textarea class="form-control new-task-title mb-2" placeholder="Enter task title"></textarea>
-                    <button class="btn btn-primary add-task-btn">Add Task</button>
-                </div>
-            </div>
-            &nbsp; &nbsp;  <!-- Spacer -->
-        </div>
+{% block title %}Kanban Task Manager{% endblock %}
 
+{% block content %}
+<div class="container-fluid">
+    <div class="col text-center title_background">
+        <a href="{{ url_for('landing_page') }}">
+            <img src="{{ url_for('static', filename='images/kanban_logo.png') }}" alt="Kanban" width="50px">
+        </a>
+        <h1 class="my-4">Kanban Task Manager</h1>
     </div>
 
-    <!-- Task Detail Modal -->
-    <div class="modal fade" id="taskModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-light">Task Details</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <input type="text" class="form-control task-title mb-2">
-                    <textarea class="form-control task-description"></textarea>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger delete-task-btn">Delete Task</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary save-task-btn">Save Changes</button>
-                </div>
+    <div class="row kanban-board">
+        &nbsp; &nbsp;  <!-- Spacer -->
+        <!-- Backlog Column -->
+        <div class="col-sm kanban-column" data-status="backlog">
+            <h6>Backlog</h6>
+            <div class="tasks-list" id="backlog-tasks"></div>
+            <div class="add-task-container">
+                <textarea class="form-control new-task-title mb-2" placeholder="Enter task title"></textarea>
+                <button class="btn btn-primary add-task-btn">Add Task</button>
+            </div>
+        </div>
+        &nbsp; &nbsp;  <!-- Spacer -->
+        <!-- To Do Column -->
+        <div class="col-sm kanban-column" data-status="todo">
+            <h6>To Do</h6>
+            <div class="tasks-list" id="todo-tasks"></div>
+            <div class="add-task-container">
+                <textarea class="form-control new-task-title mb-2" placeholder="Enter task title"></textarea>
+                <button class="btn btn-primary add-task-btn">Add Task</button>
+            </div>
+        </div>
+        &nbsp; &nbsp;  <!-- Spacer -->
+        <!-- In Progress Column -->
+        <div class="col-sm kanban-column" data-status="in_progress">
+            <h6>In Progress</h6>
+            <div class="tasks-list" id="in-progress-tasks"></div>
+            <div class="add-task-container">
+                <textarea class="form-control new-task-title mb-2" placeholder="Enter task title"></textarea>
+                <button class="btn btn-primary add-task-btn">Add Task</button>
+            </div>
+        </div>
+        &nbsp; &nbsp;  <!-- Spacer -->
+        <!-- In Review Column -->
+        <div class="col-sm kanban-column" data-status="in_review">
+            <h6>In Review</h6>
+            <div class="tasks-list" id="in-review-tasks"></div>
+            <div class="add-task-container">
+                <textarea class="form-control new-task-title mb-2" placeholder="Enter task title"></textarea>
+                <button class="btn btn-primary add-task-btn">Add Task</button>
+            </div>
+        </div>
+        &nbsp; &nbsp;  <!-- Spacer -->
+        <!-- Done Column -->
+        <div class="col-sm kanban-column" data-status="done">
+            <h6>Done</h6>
+            <div class="tasks-list" id="done-tasks"></div>
+            <div class="add-task-container">
+                <textarea class="form-control new-task-title mb-2" placeholder="Enter task title"></textarea>
+                <button class="btn btn-primary add-task-btn">Add Task</button>
+            </div>
+        </div>
+        &nbsp; &nbsp;  <!-- Spacer -->
+    </div>
+
+</div>
+
+<!-- Task Detail Modal -->
+<div class="modal fade" id="taskModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-light">Task Details</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="form-control task-title mb-2">
+                <textarea class="form-control task-description"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger delete-task-btn">Delete Task</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary save-task-btn">Save Changes</button>
             </div>
         </div>
     </div>
-    <!-- Footer -->
-    <footer class="footer fixed-bottom bg-dark text-white text-center py-3">
-        <div class="container">
-            <div class="mb-0">©{{year}} Garschke.eu - All rights reserved.</div>
-        </div>
-    </footer>
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="/static/js/app.js"></script>
-</body>
-</html>
+</div>
+
+{% endblock %}
